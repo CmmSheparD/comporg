@@ -18,6 +18,7 @@ unsigned int BitMirror(unsigned int num, int firstBit, int numOfBits) {
 	}
 	int shift = 0;
 	if (numOfBits % 2 != 0) {
+		result |= (num & mask);
 		mask <<= 1;
 		shift++;
 	}
