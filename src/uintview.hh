@@ -12,12 +12,12 @@ public:
 	UIntView(unsigned int value) : value_(value) {}
 
 	size_t bitLength();
+protected:
+	unsigned int getBit_(size_t pos);
+	unsigned int filter_(size_t from, size_t n);
 
-	unsigned int getBit(size_t pos);
-	unsigned int filter(size_t from, size_t n);
-
-	void setBits(size_t from, unsigned int value, size_t n = 1);
-	void setBitsWithMask(size_t from, unsigned int mask, size_t len);
+	void setBits_(size_t from, unsigned int value, size_t n = 1);
+	void setBitsWithMask_(size_t from, unsigned int mask, size_t len);
 private:
 	unsigned int value_;	
 };

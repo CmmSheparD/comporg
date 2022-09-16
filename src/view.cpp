@@ -1,4 +1,8 @@
+#include <stdexcept>
+
 #include "view.hh"
+
+using namespace std;
 
 namespace views {
 
@@ -23,6 +27,34 @@ std::string TypeView::binaryView()
 		view.push_back(getBit(i) ? '1' : '0');
 	}
 	return view;
+}
+
+unsigned int TypeView::getBit(size_t pos)
+{
+	if (pos >= bitLength())
+		throw out_of_range("Trying to get non-existent bit.");
+	return getBit_(pos);
+}
+
+unsigned int TypeView::filter(size_t from, size_t n)
+{
+	if (from + n >= bitLength())
+		throw out_of_range("Trying to get non-existent bit.");
+	return filter_(from, n);
+}
+
+void TypeView::setBits(size_t from, unsigned int value, size_t n)
+{
+	if (from >= bitLength() || from + n >= bitLength())
+		throw out_of_range("Trying to get non-existent bit.");
+	setBits_(from, value, n);
+}
+
+void TypeView::setBitsWithMask(size_t from, unsigned int mask, size_t len)
+{
+	if (from + len >= bitLength())
+		throw out_of_range("Trying to get non-existent bit.");
+	setBitsWithMask_(from, mask, len);
 }
 
 }	// namespace views

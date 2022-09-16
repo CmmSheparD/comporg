@@ -1,7 +1,7 @@
 #ifndef VIEW_HH
 #define VIEW_HH
-#include <string>
 
+#include <string>
 
 namespace views {
 
@@ -18,16 +18,22 @@ public:
 	virtual size_t bitLength() = 0;
 
 	// Bit position is assumed to counted from most significant bit to the least.
-	virtual unsigned int getBit(size_t pos) = 0;
+	unsigned int getBit(size_t pos);
 	// Get mask with filtered out only `n` bits starting from `from` position.
-	virtual unsigned int filter(size_t from, size_t n) = 0;
+	unsigned int filter(size_t from, size_t n);
 
 	/*
 	 * Only the least significant bit of the value is taken into
 	 * account, all other bits are ignored.
 	 */
-	virtual void setBits(size_t from, unsigned int value, size_t n = 1) = 0;
-	virtual void setBitsWithMask(size_t from, unsigned int value, size_t len) = 0;
+	void setBits(size_t from, unsigned int value, size_t n = 1);
+	void setBitsWithMask(size_t from, unsigned int mask, size_t len);
+protected:
+	virtual unsigned int getBit_(size_t pos) = 0;
+	virtual unsigned int filter_(size_t from, size_t n) = 0;
+
+	virtual void setBits_(size_t from, unsigned int value, size_t n = 1) = 0;
+	virtual void setBitsWithMask_(size_t from, unsigned int value, size_t len) = 0;
 };
 
 }	// namespace views
