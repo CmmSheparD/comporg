@@ -38,21 +38,21 @@ unsigned int TypeView::getBit(size_t pos)
 
 unsigned int TypeView::filter(size_t from, size_t n)
 {
-	if (from + n >= bitLength())
+	if (from + n > bitLength())
 		throw out_of_range("Trying to get non-existent bit.");
 	return filter_(from, n);
 }
 
 void TypeView::setBits(size_t from, unsigned int value, size_t n)
 {
-	if (from >= bitLength() || from + n >= bitLength())
+	if (from >= bitLength() || from + n > bitLength())
 		throw out_of_range("Trying to get non-existent bit.");
 	setBits_(from, value, n);
 }
 
 void TypeView::setBitsWithMask(size_t from, unsigned int mask, size_t len)
 {
-	if (from + len >= bitLength())
+	if (from + len > bitLength())
 		throw out_of_range("Trying to get non-existent bit.");
 	setBitsWithMask_(from, mask, len);
 }
