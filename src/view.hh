@@ -13,7 +13,7 @@ public:
 	 */
 	unsigned int createFilterMask(size_t start, size_t len);
 
-	std::string binaryView();
+	virtual std::string binaryView() = 0;
 
 	virtual size_t bitLength() = 0;
 

@@ -9,6 +9,19 @@ FloatView::FloatView(float value)
 	value_.value = value;
 }
 
+std::string FloatView::binaryView()
+{
+	const size_t length = bitLength();
+	std::string view;
+	unsigned int mask = 1u << length - 1u;
+	for (int i = 0; i < length; ++i) {
+		if (i == 1 || i == 9)
+			view.push_back(' ');
+		view.push_back(getBit(i) ? '1' : '0');
+	}
+	return view;
+}
+
 size_t FloatView::bitLength()
 {
 	return sizeof(value_) * 8u;

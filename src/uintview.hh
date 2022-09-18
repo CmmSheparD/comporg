@@ -11,6 +11,8 @@ class UIntView : public TypeView {
 public:
 	UIntView(unsigned int value) : value_(value) {}
 
+	std::string binaryView();
+
 	size_t bitLength();
 protected:
 	unsigned int getBit_(size_t pos);

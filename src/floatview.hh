@@ -1,6 +1,8 @@
 #ifndef FLOATVIEW_HH
 #define FLOATVIEW_HH
 
+#include <string>
+
 #include "view.hh"
 
 namespace views {
@@ -8,6 +10,8 @@ namespace views {
 class FloatView : public TypeView {
 public:
 	FloatView(float value);
+
+	std::string binaryView();
 
 	size_t bitLength();
 protected:

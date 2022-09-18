@@ -9,6 +9,19 @@ size_t UIntView::bitLength()
 	return sizeof(value_) * 8;
 }
 
+std::string UIntView::binaryView()
+{
+	const size_t length = bitLength();
+	std::string view;
+	unsigned int mask = 1u << length - 1u;
+	for (int i = 0; i < length; ++i) {
+		if (i % 8 == 0 && i != 0)
+			view.push_back(' ');
+		view.push_back(getBit(i) ? '1' : '0');
+	}
+	return view;
+}
+
 unsigned int UIntView::getBit_(size_t pos)
 {
 	return (value_ >> bitLength() - 1u - pos) & 1u;

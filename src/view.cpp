@@ -18,17 +18,6 @@ unsigned int TypeView::createFilterMask(size_t start, size_t len)
 	return mask;
 }
 
-std::string TypeView::binaryView()
-{
-	const size_t length = bitLength();
-	std::string view;
-	unsigned int mask = 1u << (sizeof(mask) * 8u - 1u);
-	for (int i = 0; i < length; ++i) {
-		view.push_back(getBit(i) ? '1' : '0');
-	}
-	return view;
-}
-
 unsigned int TypeView::getBit(size_t pos)
 {
 	if (pos >= bitLength())
