@@ -10,7 +10,7 @@ unsigned int TypeView::createFilterMask(size_t start, size_t len)
 {
 	const size_t length = bitLength();
 	unsigned int mask = 1u << length - 1 - start;
-	for (size_t i = 0; i < length - 1; ++i) {
+	for (size_t i = 0; i < len - 1; ++i) {
 		unsigned int prev = mask;
 		mask >>= 1u;
 		mask |= prev;
