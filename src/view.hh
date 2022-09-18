@@ -2,6 +2,7 @@
 #define VIEW_HH
 
 #include <string>
+#include <exception>
 
 namespace views {
 
@@ -9,9 +10,9 @@ class TypeView {
 public:
 	/*
 	 * Created a mask, that is filed with `len` `1`-s starting at
-	 * the `start` position.
+	 * the `from` position.
 	 */
-	unsigned int createFilterMask(size_t start, size_t len);
+	unsigned int createFilterMask(size_t from, size_t len);
 
 	virtual std::string binaryView() = 0;
 	virtual std::string stringView() = 0;
@@ -35,6 +36,34 @@ protected:
 
 	virtual void setBits_(size_t from, unsigned int value, size_t n = 1) = 0;
 	virtual void setBitsWithMask_(size_t from, unsigned int value, size_t len) = 0;
+};
+
+
+class BitAddressException : public std::runtime_error {
+public:
+	BitAddressException(size_t address, size_t bits) :
+		std::runtime_error("Trying to get out of range bit."),
+		address(address),
+		type_bit_length(bits)
+	{}
+
+	size_t address;
+	size_t type_bit_length;
+};
+
+
+class BitRangeAccessException : public std::runtime_error {
+public:
+	BitRangeAccessException(size_t left, size_t right, size_t bits) :
+		std::runtime_error("Trying to access bits out of the type's range."),
+		left_most_address(left),
+		right_most_address(right),
+		type_bit_length(bits)
+	{}
+
+	size_t left_most_address;
+	size_t right_most_address;
+	size_t type_bit_length;
 };
 
 }	// namespace views
