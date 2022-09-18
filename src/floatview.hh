@@ -10,8 +10,10 @@ namespace views {
 class FloatView : public TypeView {
 public:
 	FloatView(float value);
+	FloatView(unsigned int value) { value_.view = value; }
 
 	std::string binaryView();
+	std::string stringView();
 
 	size_t bitLength();
 protected:

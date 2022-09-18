@@ -1,3 +1,6 @@
+#include <string>
+#include <sstream>
+
 #include "floatview.hh"
 
 using namespace std;
@@ -9,7 +12,7 @@ FloatView::FloatView(float value)
 	value_.value = value;
 }
 
-std::string FloatView::binaryView()
+string FloatView::binaryView()
 {
 	const size_t length = bitLength();
 	std::string view;
@@ -19,6 +22,15 @@ std::string FloatView::binaryView()
 			view.push_back(' ');
 		view.push_back(getBit(i) ? '1' : '0');
 	}
+	return view;
+}
+
+string FloatView::stringView()
+{
+	string view;
+	stringstream buf;
+	buf << value_.value;
+	buf >> view;
 	return view;
 }
 

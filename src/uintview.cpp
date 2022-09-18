@@ -1,3 +1,6 @@
+#include <string>
+#include <sstream>
+
 #include "uintview.hh"
 
 using namespace std;
@@ -9,7 +12,7 @@ size_t UIntView::bitLength()
 	return sizeof(value_) * 8;
 }
 
-std::string UIntView::binaryView()
+string UIntView::binaryView()
 {
 	const size_t length = bitLength();
 	std::string view;
@@ -19,6 +22,15 @@ std::string UIntView::binaryView()
 			view.push_back(' ');
 		view.push_back(getBit(i) ? '1' : '0');
 	}
+	return view;
+}
+
+string UIntView::stringView()
+{
+	string view;
+	stringstream buf;
+	buf << value_;
+	buf >> view;
 	return view;
 }
 

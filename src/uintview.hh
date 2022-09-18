@@ -12,6 +12,7 @@ public:
 	UIntView(unsigned int value) : value_(value) {}
 
 	std::string binaryView();
+	std::string stringView();
 
 	size_t bitLength();
 protected:

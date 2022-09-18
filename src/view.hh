@@ -14,6 +14,7 @@ public:
 	unsigned int createFilterMask(size_t start, size_t len);
 
 	virtual std::string binaryView() = 0;
+	virtual std::string stringView() = 0;
 
 	virtual size_t bitLength() = 0;
 
