@@ -6,7 +6,7 @@ using namespace std;
 
 namespace views {
 
-unsigned int TypeView::createFilterMask(size_t from, size_t len)
+unsigned int TypeView::createFilterMask(size_t from, size_t len) const
 {
 	if (from + len > bitLength())
 		throw BitRangeAccessException(from, from + len, bitLength());
@@ -20,14 +20,14 @@ unsigned int TypeView::createFilterMask(size_t from, size_t len)
 	return mask;
 }
 
-unsigned int TypeView::getBit(size_t pos)
+unsigned int TypeView::getBit(size_t pos) const
 {
 	if (pos >= bitLength())
 		throw BitAddressException(pos, bitLength());
 	return getBit_(pos);
 }
 
-unsigned int TypeView::filter(size_t from, size_t n)
+unsigned int TypeView::filter(size_t from, size_t n) const
 {
 	if (from + n > bitLength())
 		throw BitRangeAccessException(from, from + n, bitLength());

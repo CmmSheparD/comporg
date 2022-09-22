@@ -7,12 +7,12 @@ using namespace std;
 
 namespace views {
 
-size_t UIntView::bitLength()
+size_t UIntView::bitLength() const
 {
 	return sizeof(value_) * 8;
 }
 
-string UIntView::binaryView()
+string UIntView::binaryView() const
 {
 	const size_t length = bitLength();
 	std::string view;
@@ -25,7 +25,7 @@ string UIntView::binaryView()
 	return view;
 }
 
-string UIntView::stringView()
+string UIntView::stringView() const
 {
 	string view;
 	stringstream buf;
@@ -34,12 +34,12 @@ string UIntView::stringView()
 	return view;
 }
 
-unsigned int UIntView::getBit_(size_t pos)
+unsigned int UIntView::getBit_(size_t pos) const
 {
 	return (value_ >> bitLength() - 1u - pos) & 1u;
 }
 
-unsigned int UIntView::filter_(size_t from, size_t n)
+unsigned int UIntView::filter_(size_t from, size_t n) const
 {
 	unsigned int filter_mask = createFilterMask(from, n);
 	return value_ & filter_mask;

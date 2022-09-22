@@ -12,7 +12,7 @@ FloatView::FloatView(float value)
 	value_.value = value;
 }
 
-string FloatView::binaryView()
+string FloatView::binaryView() const
 {
 	const size_t length = bitLength();
 	std::string view;
@@ -25,7 +25,7 @@ string FloatView::binaryView()
 	return view;
 }
 
-string FloatView::stringView()
+string FloatView::stringView() const
 {
 	string view;
 	stringstream buf;
@@ -35,17 +35,17 @@ string FloatView::stringView()
 	return view;
 }
 
-size_t FloatView::bitLength()
+size_t FloatView::bitLength() const
 {
 	return sizeof(value_) * 8u;
 }
 
-unsigned int FloatView::getBit_(size_t pos)
+unsigned int FloatView::getBit_(size_t pos) const
 {
 	return (value_.view >> bitLength() - 1u - pos) & 1u;
 }
 
-unsigned int FloatView::filter_(size_t from, size_t n)
+unsigned int FloatView::filter_(size_t from, size_t n) const
 {
 	unsigned int filter_mask = createFilterMask(from, n);
 	return value_.view & filter_mask;
