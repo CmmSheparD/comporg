@@ -2,7 +2,7 @@
 #define VIEW_HH
 
 #include <string>
-#include <exception>
+#include <stdexcept>
 
 namespace views {
 
