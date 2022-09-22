@@ -29,6 +29,7 @@ string FloatView::stringView()
 {
 	string view;
 	stringstream buf;
+	buf.flags(buf.flags() | buf.scientific);
 	buf << value_.value;
 	buf >> view;
 	return view;
