@@ -11,7 +11,7 @@ unsigned int TypeView::createFilterMask(size_t from, size_t len) const
 	if (from + len > bitLength())
 		throw BitRangeAccessException(from, from + len, bitLength());
 	const size_t length = bitLength();
-	unsigned int mask = 1u << length - 1 - from;
+	unsigned int mask = 1u << (length - 1 - from);
 	for (size_t i = 0; i < len - 1; ++i) {
 		unsigned int prev = mask;
 		mask >>= 1u;

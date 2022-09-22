@@ -16,11 +16,12 @@ string UIntView::binaryView() const
 {
 	const size_t length = bitLength();
 	std::string view;
-	unsigned int mask = 1u << length - 1u;
-	for (int i = 0; i < length; ++i) {
-		if (i % 8 == 0 && i != 0)
+	unsigned int mask = 1u << (length - 1u);
+	for (size_t i = 0; i < length; ++i) {
+		if (i % 8u == 0 && i != 0)
 			view.push_back(' ');
-		view.push_back(getBit(i) ? '1' : '0');
+		view.push_back(value_ & mask ? '1' : '0');
+		mask >>= 1u;
 	}
 	return view;
 }
@@ -36,7 +37,7 @@ string UIntView::stringView() const
 
 unsigned int UIntView::getBit_(size_t pos) const
 {
-	return (value_ >> bitLength() - 1u - pos) & 1u;
+	return (value_ >> (bitLength() - 1u - pos)) & 1u;
 }
 
 unsigned int UIntView::filter_(size_t from, size_t n) const

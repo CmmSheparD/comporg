@@ -16,11 +16,12 @@ string FloatView::binaryView() const
 {
 	const size_t length = bitLength();
 	std::string view;
-	unsigned int mask = 1u << length - 1u;
-	for (int i = 0; i < length; ++i) {
-		if (i == 1 || i == 9)
+	unsigned int mask = 1u << (length - 1u);
+	for (size_t i = 0; i < length; ++i) {
+		if (i == 1u || i == 9u)
 			view.push_back(' ');
-		view.push_back(getBit(i) ? '1' : '0');
+		view.push_back(value_.view & mask ? '1' : '0');
+		mask >>= 1u;
 	}
 	return view;
 }
@@ -42,7 +43,7 @@ size_t FloatView::bitLength() const
 
 unsigned int FloatView::getBit_(size_t pos) const
 {
-	return (value_.view >> bitLength() - 1u - pos) & 1u;
+	return (value_.view >> (bitLength() - 1u - pos)) & 1u;
 }
 
 unsigned int FloatView::filter_(size_t from, size_t n) const

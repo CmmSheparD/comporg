@@ -120,7 +120,7 @@ unsigned int parseUIntFromInput()
 		try {
 			input = stoul(buffer);
 			break;
-		} catch (exception) {
+		} catch (exception &) {
 			cout << "Invalid input! Try again!" << endl;
 		}
 	} while (true);
@@ -137,7 +137,7 @@ float parseFloatFromInput()
 		try {
 			input = stof(buffer);
 			break;
-		} catch (exception) {
+		} catch (exception &) {
 			cout << "Invalid input! Try again!" << endl;
 		}
 	} while (true);
