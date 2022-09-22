@@ -11,6 +11,8 @@ class UIntView : public TypeView {
 public:
 	UIntView(unsigned int value) : value_(value) {}
 
+	~UIntView() = default;
+
 	std::string binaryView() const;
 	std::string stringView() const;
 

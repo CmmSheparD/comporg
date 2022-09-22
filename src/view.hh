@@ -8,6 +8,7 @@ namespace views {
 
 class TypeView {
 public:
+	virtual ~TypeView() = default;
 	/*
 	 * Created a mask, that is filed with `len` `1`-s starting at
 	 * the `from` position.

@@ -11,6 +11,8 @@ class FloatView : public TypeView {
 public:
 	FloatView(float value);
 
+	~FloatView() = default;
+
 	std::string binaryView() const;
 	std::string stringView() const;
 
