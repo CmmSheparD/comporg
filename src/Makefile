@@ -1,5 +1,5 @@
 CPPC = g++
-CPPFLAGS = -c -Wall -Wextra -Wpedantic
+CPPFLAGS = -Wall -Wextra -Wpedantic
 EXE = mirror
 OBJ = `find . -name "*.o"`
 
