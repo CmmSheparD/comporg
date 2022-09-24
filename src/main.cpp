@@ -107,7 +107,7 @@ void getMirrorParameters(const TypeView *const view, size_t &right, size_t &bits
 		bits = parseUIntFromInput();
 		if (bits > right + 1)
 			cout << "Too big value! Try again!" << endl;
-	} while (right > right + 1);
+	} while (bits > right + 1);
 }
 
 unsigned int parseUIntFromInput()
